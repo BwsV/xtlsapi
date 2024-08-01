@@ -30,13 +30,7 @@ class AddClient(BaseService):
                 account=config_pb2.Account(password=user_id_or_password,cipher_type=cipher_map.get(cipher,cipher_map[None]))
             elif protocol=='shadowsocks_2022':
                 from xtlsapi.xray_api.proxy.shadowsocks_2022 import config_pb2
-                cipher_map={'aes_128_gcm':config_pb2.CipherType.AES_128_GCM,
-                            'aes_256_gcm':config_pb2.CipherType.AES_256_GCM,
-                            'chacha20_poly1305':config_pb2.CipherType.CHACHA20_POLY1305,
-                            'xchacha20_poly1305':config_pb2.CipherType.XCHACHA20_POLY1305,
-                            None:config_pb2.CipherType.NONE
-                            }
-                account=config_pb2.Account(password=user_id_or_password,cipher_type=cipher_map.get(cipher,cipher_map[None]))
+                account=config_pb2.Account(password=user_id_or_password)
             else:
                 raise Exception("not implemented "+protocol )
 
